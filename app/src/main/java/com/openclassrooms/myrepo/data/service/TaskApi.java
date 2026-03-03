@@ -3,7 +3,11 @@ package com.openclassrooms.myrepo.data.service;
 import com.openclassrooms.myrepo.model.Task;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 
 /**
  * Cette classe simule la récupération de tâches depuis une API.
@@ -18,16 +22,67 @@ public class TaskApi {
     public List<Task> getTasks() {
         // Simule la récupération des tâches depuis une API
         List<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Faire les courses pour le dîner"));
-        tasks.add(new Task("Préparer le rapport pour la réunion"));
-        tasks.add(new Task("Répondre aux e-mails en attente"));
-        tasks.add(new Task("Faire de l'exercice pendant 30 minutes"));
-        tasks.add(new Task("Planifier les vacances d'été"));
-        tasks.add(new Task("Rendre le livre à la bibliothèque"));
-        tasks.add(new Task("Réviser pour l'examen de mathématiques"));
-        tasks.add(new Task("Appeler le plombier pour la fuite d'eau"));
-        tasks.add(new Task("Nettoyer le garage"));
-        tasks.add(new Task("Préparer une liste de courses"));
+
+        // Modif 6 : utilisation de la classe Calendar pour obtenir une date
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date()); // Date actuelle
+
+
+        tasks.add(new Task("Faire les courses pour le dîner", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);// Ajoute 1 jour
+
+        tasks.add(new Task("Préparer le rapport pour la réunion", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Répondre aux e-mails en attente", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Faire de l'exercice pendant 30 minutes", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Planifier les vacances d'été", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Rendre le livre à la bibliothèque", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Réviser pour l'examen de mathématiques", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Appeler le plombier pour la fuite d'eau", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Nettoyer le garage", calendar.getTime()));
+
+
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+        tasks.add(new Task("Préparer une liste de courses", calendar.getTime()));
         return tasks;
     }
 }
