@@ -1,34 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--
+    Carte qui contient l'affichage d'une tâche.
+    Elle sert de "boîte" visuelle autour de chaque élément de la liste.
+-->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="80dp"
     android:layout_margin="16dp"
     android:layout_marginBottom="8dp"
+    android:minHeight="80dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
+    <!--
+        Zone principale qui organise les éléments (textes + barre de progression)
+        grâce à ConstraintLayout.
+    -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="4dp">
 
+        <!--
+            Texte qui affiche la description de la tâche.
+            Exemple : "Nettoyer la cuisine"
+        -->
         <TextView
             android:id="@+id/task_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/task_duetime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Needs to clean the bathrooms" />
+
+        <!--
+            Texte qui affiche la date limite de la tâche.
+            Exemple : "Date limite : 20/03/2024"
+        -->
+        <TextView
+            android:id="@+id/task_duetime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_description"
+            tools:text="Date d'échéance : 20/03/2024" />
+
+        <!--
+            Barre de progression qui montre combien de temps il reste
+            avant la date limite de la tâche.
+            Exemple : 50% si la moitié du temps est passée.
+        -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/task_duetime"
+            app:layout_constraintStart_toStartOf="@id/task_duetime"
+            app:layout_constraintTop_toBottomOf="@+id/task_duetime"
+            tools:progress="50" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

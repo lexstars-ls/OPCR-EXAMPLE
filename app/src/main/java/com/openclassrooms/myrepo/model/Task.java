@@ -4,86 +4,82 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * Une classe représentant une tâche avec une description et une date limite.
+ * Représente une tâche. Une tâche contient un texte (description)
+ * et une date limite (dueTime) qui indique jusqu'à quand elle doit être faite.
  */
 public class Task {
+
     private String description;
-    // Modif 1 : ajout de l'attribut de classe pour la fonctionnalité date d'échéance
+
+    // Modif 1 : Ajout d'une date limite pour la tâche.
+    // Cette date indique jusqu'à quand la tâche doit être réalisée.
     private Date dueTime;
 
     /**
-     * Constructeur pour créer une nouvelle tâche avec une description.
-     * Par défaut, la date limite est à +10 jours à partir de la date de création.
+     * Crée une nouvelle tâche avec une description et une date limite.
      *
-     * @param description La description de la tâche.
+     * @param description Le texte qui décrit la tâche.
+     * @param dueTime La date limite à laquelle la tâche doit être terminée.
      */
     public Task(String description, Date dueTime) {
         this.description = description;
         this.dueTime = dueTime;
-
     }
-    // Modif 2 : Ajout du Getter pour la date d'échéance
+
+    // Modif 2 : Getter pour récupérer la date limite.
 
     /**
-     * Obtient la date d'échéance de la tâche.
+     * Retourne la date limite de la tâche.
      *
-     * @return La date d'échéance de la tâche.
+     * @return La date limite.
      */
-
     public Date getDueTime() {
         return dueTime;
     }
-    // Modif 3 : Ajout du Setter pour le temps limite
+
+    // Modif 3 : Setter pour modifier la date limite.
 
     /**
-     * Modifie le temps limite de la tâche.
+     * Change la date limite de la tâche.
      *
-     * @param dueTime La nouvelle date d'échéance de la tâche.
+     * @param dueTime La nouvelle date limite.
      */
-
     public void setDueTime(Date dueTime) {
         this.dueTime = dueTime;
     }
 
     /**
-     * Obtient la description de la tâche.
+     * Retourne la description de la tâche.
      *
-     * @return La description de la tâche.
+     * @return Le texte de la tâche.
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Modifie la description de la tâche.
+     * Change la description de la tâche.
      *
-     * @param description La nouvelle description de la tâche.
+     * @param description Le nouveau texte de la tâche.
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
-
     @Override
-
     public boolean equals(Object o) {
 
         if (this == o) return true;
-
         if (o == null || getClass() != o.getClass()) return false;
 
         Task task = (Task) o;
 
-        return Objects.equals(description, task.description) && Objects.equals(dueTime, task.dueTime);
-
+        return Objects.equals(description, task.description)
+                && Objects.equals(dueTime, task.dueTime);
     }
 
     @Override
-
     public int hashCode() {
-
         return Objects.hash(description, dueTime);
-
     }
-
 }
